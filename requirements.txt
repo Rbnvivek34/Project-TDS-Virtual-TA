@@ -8,3 +8,5 @@ Pillow
 openai
 faiss-cpu
 python-dotenv
+scikit-learn
+numpy
