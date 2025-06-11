@@ -6,4 +6,4 @@ services:
     startCommand: "uvicorn api.app:app --host 0.0.0.0 --port 10000"
     envVars:
       - key: OPENAI_API_KEY
-        value: eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjIwMDE2OTlAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.yrohG3orhMewVJSalSoaV_yz-0yNQK1MhaXsY8CFmng
+        value: your-openai-api-key
