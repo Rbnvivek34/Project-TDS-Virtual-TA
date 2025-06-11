@@ -1,7 +1,8 @@
+import os
 import openai
 from model.retriever import retrieve_docs
 
-openai.api_key = OPENAI_API_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")
 def generate_answer(question: str, image=None):
     context_docs = retrieve_docs(question)
 
