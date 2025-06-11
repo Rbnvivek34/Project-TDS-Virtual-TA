@@ -9,6 +9,12 @@ class QuestionInput(BaseModel):
     question: str
     image: str = None  # Optional base64 image if provided
 
+@app.get("/")
+def root():
+    return {
+        "message": "Welcome to the TDS Virtual TA API. Use POST / to ask questions."
+    }
+
 @app.post("/")
 async def answer_question(input_data: QuestionInput):
     question = input_data.question
