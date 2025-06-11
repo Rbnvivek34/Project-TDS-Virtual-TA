@@ -3,24 +3,39 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load content from JSON files
 def load_docs():
-    base_path = "data"  # or "." if in root
-    discourse_file = os.path.join(base_path, "discourse_posts.json")
-    course_file = os.path.join(base_path, "course_content.json")
+    base_path = "data"  # Update if your JSON files are elsewhere
 
-    with open(discourse_file, "r", encoding="utf-8") as f:
-        discourse_data = json.load(f)
-    with open(course_file, "r", encoding="utf-8") as f:
+    # Load course content documents
+    with open(os.path.join(base_path, "course_content.json"), "r", encoding="utf-8") as f:
         course_data = json.load(f)
+        course_docs = [
+            {
+                "title": item["title"],
+                "content": item["content"],
+                "url": None  # Course content has no direct URLs
+            }
+            for item in course_data
+        ]
 
-    return discourse_data + course_data  # Combine both
+    # Load discourse posts documents
+    with open(os.path.join(base_path, "discourse_posts.json"), "r", encoding="utf-8") as f:
+        discourse_data = json.load(f)
+        discourse_docs = [
+            {
+                "title": f"Discourse Topic {item['topic_id']}",
+                "content": item["raw"],
+                "url": item.get("url")
+            }
+            for item in discourse_data
+        ]
 
-# Preload documents (avoid reloading every time)
+    return course_docs + discourse_docs
+
+# Pre-load docs and create TF-IDF embeddings once
 ALL_DOCS = load_docs()
 ALL_TEXTS = [doc["title"] + " " + doc["content"] for doc in ALL_DOCS]
 
-# TF-IDF vectorizer
 VECTORIZER = TfidfVectorizer(stop_words="english").fit(ALL_TEXTS)
 DOC_EMBEDDINGS = VECTORIZER.transform(ALL_TEXTS)
 
@@ -32,8 +47,8 @@ def retrieve_docs(question: str, top_k=3):
     results = []
     for i in top_indices:
         doc = ALL_DOCS[i]
-        content = f"{doc.get('title', '')}\n{doc.get('content', '')}"
-        if "url" in doc:
+        content = f"{doc['title']}\n{doc['content']}"
+        if doc.get("url"):
             content += f"\nLink: {doc['url']}"
         results.append(content)
 
