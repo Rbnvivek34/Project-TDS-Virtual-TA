@@ -1,0 +1,14 @@
+[
+  {
+    "topic_id": 155939,
+    "raw": "Use the model that’s mentioned in the question. Don't substitute it with gpt-4o-mini even if the AI proxy supports it.",
+    "created_at": "2025-03-14T12:00:00Z",
+    "url": "https://discourse.onlinedegree.iitm.ac.in/t/ga5-question-8-clarification/155939/4"
+  },
+  {
+    "topic_id": 155939,
+    "raw": "You just have to use a tokenizer, similar to what Prof. Anand used, to get the number of tokens and multiply that by the given rate.",
+    "created_at": "2025-03-14T11:00:00Z",
+    "url": "https://discourse.onlinedegree.iitm.ac.in/t/ga5-question-8-clarification/155939/3"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Tokenization",
+    "content": "Tokenization is the process of converting text into smaller units called tokens. For example, 'I love AI' becomes ['I', 'love', 'AI']."
+  },
+  {
+    "title": "Web APIs",
+    "content": "A Web API allows applications to communicate over HTTP. For example, a FastAPI endpoint can receive a POST request and return a JSON response."
+  },
+  {
+    "title": "Language Models",
+    "content": "Language models like GPT-4 generate human-like text by predicting the next word given a prompt."
+  }
+]

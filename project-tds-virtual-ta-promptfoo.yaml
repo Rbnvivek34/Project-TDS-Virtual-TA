@@ -1,0 +1,14 @@
+providers:
+  - id: tds-api
+    type: openai
+    config:
+      url: https://YOUR_DEPLOYED_API_URL/
+
+scenarios:
+  - name: "GPT version choice"
+    vars:
+      question: "Should I use gpt-4o-mini which AI proxy supports, or gpt3.5 turbo?"
+
+  - name: "Tokenization explanation"
+    vars:
+      question: "Can someone explain what tokenization is with an example?"
